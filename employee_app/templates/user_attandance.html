@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title> Upload Attendance </title>
+</head>
+<body>
+    <div class="container">
+        
+        <a href="/logout"> Logout </a> | <a href="/admin"> Go Back </a>
+        <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 900px;">
+                <h4 class="card-title mt-3 text-center">Upload Users Attendance</h4>
+                
+                <div class="form-group input-group">
+                    <form action="/upload" method="POST" enctype="multipart/form-data" class="form-group col-xs-3">
+                        {% csrf_token %}
+                        <p>Description: <input type="text" class="form-group col-xs-3" name="desc"></p>
+                        <p class="form-group col-xs-3">
+                            {{ form.document.errors }}
+                            {{ form.document }}
+                        </p>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </form>
+                </div>
+
+                <div>
+                    {% if attandences %}
+                    <table class="table">
+                        <thead class="thead-light">
+                            <th>No.</th>
+                            <th>Description</th>
+                            <th>Download Attandence File</th>
+                        </thead>
+                        {% for attandence in attandences %}
+                        <tr>
+                            <td class="table-success">{{ attandence.id }}</td>
+                            <td>{{ attandence.description }}</td>
+                            <td><a href="{{ attandence.document.url }}">{{ attandence.document.name }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                </div>
+            </article>
+        </div>
+    </div>
+    
+</body>
+</html>

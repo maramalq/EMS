@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title> Admin Dashboard </title>
+</head>
+<body>
+    <div class="container">
+        <a href="/logout"> Logout </a>| <a href="/login"> Go Back </a>
+        <div class="card bg-light">
+
+            <div class="card-body mx-auto" style="max-width: 1000px;">
+            <div>
+                <h1 class="card-title mt-3 text-center">All Employees</h1>
+                <table class="table">
+                    <thead class="thead-light">
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Birthday</th>
+                        <th>Department</th>
+                        <th> Total Salary</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                    {% for user in all_users %}
+                    {% if user.position == False %}
+                    <tr>
+                        <td class="table-success">{{ user.id }}</td>
+                        <td>{{ user.first_name }} {{ user.last_name}}</td>
+                        <td>{{ user.birthday }}</td>
+                        <td>{{ user.department.name }}</td>
+                        <td>{{ user.total_salary }}</td>
+                        <td>
+                            <a href="/edit_emp/{{user.id}}">Edit</a> | <a href="/remove_emp/{{user.id}}">Remove</a> | <a href="/calculate_salary/{{user.id}}">Calculate Salary</a></td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+            
+            <div>
+                <a href="/add_emp">Add Employee</a>
+            </div>
+
+            <div>
+                <a href="/attandence">Employees Attendance</a>
+            </div>
+
+            <div>
+                <a href="/upload">Upload Attendance</a>
+            </div>
+
+            <div>
+                <a href="/send_email">Contact with The Employees</a>
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+</html>

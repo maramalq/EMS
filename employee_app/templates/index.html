@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Employee Management System</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card bg-light">
+                
+            <div class="card-body mx-auto" style="max-width: 900px;">
+                <img class="head_image" src="{% static 'images/icon.png' %}">
+            </div>
+
+            <div id="form" class="form-group input-group">
+                <form action="/register" method="GET" class="form-group col-xs-3">
+                {% csrf_token %}
+                    <button class="btn" type="submit">Sign up</button>
+                </form>
+                <form action="/login" method="GET" class="form-group col-xs-3">
+                    {% csrf_token %}
+                        <button class="btn" type="submit">Sign in</button>
+                </form>
+            </div>
+
+            <div>
+                <img class="bottom_image" src="https://palmhr.net/assets/images/home.png" alt="image" style="width: 500px;"> 
+            </div>
+
+            <footer>
+                <p>Spoiled Coders Management System | <a href="spoiled.coders@gmail.com"></a>spoiled.coders@gmail.com | ©2021 Spoiled Coders.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

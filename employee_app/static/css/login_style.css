@@ -1,0 +1,39 @@
+body {
+  height: 100%;
+  background-image: linear-gradient(to top, #63C1B0,#f1f2f4);
+}
+
+.container{
+  height: 900px;
+  -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+}
+
+
+.btn{
+  margin: 10px;
+  padding: 10px;
+  background-color: #314964;
+    color: #f1f2f4;
+}
+
+.btn:hover{
+  background-color: #338b86;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Employee</title>
+</head>
+<body>
+    <div class="container">
+        <a href="/logout"> Logout </a>| <a href="/login"> Go Back </a>
+        <div class="card bg-light">
+            <div class="card-body mx-auto" style="max-width: 9000px;">
+    
+            
+                <h1 class="card-title text-center">Employee info</h1>
+                <p> <strong>ID </strong> {{ this_user.id }} </p>
+                <p><strong>Name </strong>{{ this_user.first_name }} {{ this_user.last_name}} </p>
+                <p><strong>Birthday </strong>{{ this_user.birthday }} </p>
+                <p><strong>Department </strong> {{ this_user.department.name }}</p>
+                <p> <strong>Total Salary </strong>{{ this_user.total_salary }}</p>
+                <a href="/edit_info">Edit My Information</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

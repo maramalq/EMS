@@ -1,0 +1,52 @@
+body {
+    height: 100%;
+    background-image: linear-gradient(to top, #63C1B0,#f1f2f4);
+}
+
+#form{
+    margin-left: 400px;
+}
+
+.container{
+    height: 900px;
+}
+
+.btn{
+    margin: 10px;
+    padding: 10px;
+    background-color: #314964;
+    color: #f1f2f4;
+}
+
+.btn:hover{
+    background-color: #338b86;
+}
+
+.head_image{
+    margin-right: 100px;
+    width: 300px;
+}
+
+.bottom_image{
+    margin-left: 300px;
+}
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 100px;
+}
+
+footer{
+    margin: -11px 0px;
+    padding: 0;
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+footer p{
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+    color: black;
+    font-size: small;
+}

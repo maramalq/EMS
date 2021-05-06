@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+    <title>Registeration</title>
+</head>
+<body>
+
+    <div class="container">
+        
+        <a href="/"> Go Back </a>
+        <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Register</h4>
+                <img src="{% static 'images/avatar1.png' %}" class="avatar" />
+        <div class="form-group input-group">
+            <form action="/register" method="POST" class="form-group col-xs-3 needs-validation" novalidate>
+                {% csrf_token %}
+                <p> First Name: <input type="text" class="form-control" name="first_name" required> </p>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <p> Last Name: <input type="text" class="form-control" name="last_name" required> </p>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <p> Birthday: <input  type="date"  class="form-control" name="birthday"  required> </p>
+                <label for="validationCustom04" class="form-label">Department:</label>
+                <select  name="department" class="form-select form-control" id="validationCustom04" required>
+                    <option selected disabled value="">Choose...</option>
+                    {% for department in all_departments %}
+                        <option  value="{{department.id}}">{{department.name}}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">
+                    Please select a valid Department.
+                </div>
+                <p> Position <br>
+                <div class="form-check">
+                    <input class="form-uncheck-input"  type="radio" name="position" value="true" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Admin
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-uncheck-input" type="radio" name="position" value="false"  id="flexRadioDefault2" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Employee
+                    </label>
+                </div>
+                <p> Email: <input type="email" class="form-control" name="email" required> </p>
+                <div class="invalid-feedback">
+                    Invalid Email!
+                </div>
+                <label for="validationCustomUsername" class="form-label">Username</label>
+                <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <input name="user_name" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                    Please choose a username.
+                    </div>
+                </div>
+                <p> Password: <input type="password" class="form-control" name="password" required> </p>
+                <div class="invalid-feedback">
+                    Password should be at least 8 characters!
+                </div>
+                <p> Conforim Password: <input type="password" class="form-control" name="conforin_pw" required> </p>
+                <div class="invalid-feedback">
+                    Password not matched!
+                </div>
+                <button type="submit" class="btn"> Register </button>
+            </form>
+        </div>
+
+        {% if messages %}
+            <div class="messages" style="color: brown;">    
+                {% for message in messages %}    
+                    <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>    
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

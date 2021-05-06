@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title> Admin Dashboard </title>
+</head>
+<body>
+    <div class="container">
+        <a href="/logout"> Logout </a>| <a href="/login"> Go Back </a>
+        <div class="card bg-light">
+
+            <div class="card-body mx-auto" style="max-width: 1000px;">
+            <div>
+                <h1 class="card-title mt-3 text-center">Attandence</h1>
+                <h3 class="card-title mt-3 text-center" >Date :{{ date }}</h3>
+                <table class="table">
+                    <thead class="thead-light">
+                        <th>ID</th>
+                        <th>Name</th>
+                        <!-- <th>Date</th> -->
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                    {% for i in emp %}
+                    <tr>
+                        <td class="table-success">{{ i.id }}</td>
+                        <td>{{ i.first_name }} {{ i.last_name}}</td>
+                        <!-- <td> <form action="/attended" method="POST" >
+                            {% csrf_token %}<input type="date" name="work_day" ></form></td> -->
+                        <td>
+                            <a href="/attandence/{{i.id}}/attended">Attend</a> | <a href="/attandence/{{i.id}}/absent">Absent</a> 
+                        </td>
+                    </tr>
+                    
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+            
+            <div>
+                <a href="/add_emp">Add Employee</a>
+            </div>
+
+            <div>
+                <a href="/upload">Upload Attendance</a>
+            </div>
+            <div>
+                <a href="/add_attendanc">Employees Attendance</a>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
